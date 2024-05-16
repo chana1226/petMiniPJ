@@ -19,5 +19,4 @@
 
 
 좀 더 자세한 기능 설명과 영상 등은 아래 PDF파일에서 확인해주세요!
-
-https://github.com/chana1226/petMiniPJ/issues/1#issue-2299874692
+https://github.com/chana1226/petMiniPJ/issues/1#issue-2299874692](https://github.com/chana1226/petMiniPJ/files/15332793/Petwave.PDF.pdf
