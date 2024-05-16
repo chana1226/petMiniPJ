@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="kor">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>입양신청</title>
+    <link rel="icon" type="image/x-icon" href="/petMiniPJ/petImg/PETWAVE 로고.png">
+    <link rel="stylesheet" href="/petMiniPJ/petCss/petwave.css">
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+<style>
+    .nav-link {
+        color: #4d4138;
+    }
+
+    #home {
+        color: #e77823;
+    }
+
+    section {
+        text-align: center;
+    }
+
+    #formF {
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+    
+</style>
+
+<body style="background-color: #fffcf9;" class="font">
+
+    <header class="text-center">
+        <a href="/petMiniPJ/petHtml/petwaveMain.html"><img src="/petMiniPJ/petImg/로고 가로버전.png" width="500" height="100"
+                alt="Petwave 로고"></a>
+    </header>
+    <nav>
+        <ul class="nav nav-underline justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/petMiniPJ/petHtml/petwaveMain.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/petMiniPJ/petHtml/Intro.html">Petwave 소개</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/petMiniPJ/petHtml/underPet.html">반려동물 이해하기</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/petMiniPJ/petHtml/seePet.html">입양공고 보기</a>
+            </li>
+            <li class="nav-item">
+                <a id="home" class="nav-link active" href="/petMiniPJ/petHtml/beFamily.html">입양신청</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/petMiniPJ/petHtml/interPet.html">관심 공고</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/petMiniPJ/petHtml/findPet.html">입양공고 검색</a>
+            </li>
+        </ul>
+    </nav>
+    <section>
+
+        <div id="formF">
+            <span class="fontB">
+                <br>
+                <p style="font-size: 30px;">입양신청</p>
+            </span>
+        </div>
+
+        <div id="formF">
+            <span class="fontB">이름</span><br>
+            <input type="text" id="name" placeholder="필수입력">
+        </div>
+
+        <div id="formF">
+            <span class="fontB">전화번호</span><br>
+            <input type="text" id="phone" placeholder="xxx-xxxx-xxxx">
+        </div>
+
+        <div id="formF">
+            <span class="fontB">주소</span><br>
+            <input type="text" id="sample4_postcode" placeholder="우편번호">
+            <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+            <input type="text" id="sample4_roadAddress" placeholder="도로명주소">
+            <span id="guide" style="color:#999;display:none"></span>
+            <input type="text" id="sample4_detailAddress" placeholder="상세주소">
+            <input type="text" id="sample4_extraAddress" placeholder="참고항목">
+
+            <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        </div>
+
+        <div id="formF">
+            <span class="fontB">입양신청 이유</span><br>
+            <textarea id="textW" placeholder=" 30자 이상" style="width: 550px; height: 100px;" onkeydown="key()"
+                onkeypress="key()" onkeyup="key()"></textarea><br>
+            <!--onkeyup, onkeydown, onkeypress를 통해 유니코드 포함, 텍스트를 입력할 때 글자수를 세기 위해 사용했다.
+                onkeyup은 눌렀다 뗐을 때, 즉 입력 후 key()함수 호출
+                onkeydown, onkeypress는 누를 때, 즉 입력 전 key()함수 호출-->
+            <input type="number" id="cnt" value="0" readonly style="border:none">자<br>
+        </div>
+
+        <div id="formF">
+            <span class="fontB">입양 후 아이들을 위한 약속</span><br>
+            <span class="fontB">첫 번째, </span>
+            <input id="pro" type="text" style="width: 550px;" placeholder="필수 입력"><br>
+            <span class="fontB">두 번째, </span>
+            <input id="pro" type="text" style="width: 550px;" placeholder="필수 입력"><br>
+            <span class="fontB">세 번째, </span>
+            <input id="pro" type="text" style="width: 550px;" placeholder="필수 입력"><br>
+        </div>
+
+        <button id="formF" type="button" class="btn btn-primary" onclick="chk()">신청하기</button>
+
+
+        <!--모달 부분-->
+        <div class="modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">입양 신청</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>입양 신청서를 제출하시겠습니까?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                        <button type="button" class="btn btn-primary">제출</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <footer>
+        <div id="call">
+            <span class="fontB">
+                <span>
+                    <p style="font-size: 20px">펫웨이브 콜센터</p>
+                </span>
+                <span>
+                    <p style="font-size: 30px"><strong>031-236-4129</strong></p>
+                </span>
+                <span class="font">AM 10:00 - PM 06:00 (주말, 공휴일 휴무)</span>
+            </span>
+        </div>
+        <div id="petwaveinfo">
+            <span>
+                <img src="/petMiniPJ/petImg/작은로고.png" width="150" height="30"><br><br>
+                <span>대표 | 이혜민<br></span>
+                <span>수원센터 | 경기도 수원시 팔달구 매산로 11<br></span>
+                <span>Copyright 2024. TeamSmartwave_이혜민<br></span>
+                <span><a href="#">이용약관</a> <a href="#">개인정보보호</a></span>
+            </span>
+        </div>
+    </footer>
+</body>
+<script src="/petMiniPJ/petJs/pet.js">
+
+</script>
+
+</html>
