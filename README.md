@@ -20,4 +20,5 @@
 
 좀 더 자세한 기능 설명과 영상 등은 아래 PDF파일에서 확인해주세요!
 
-https://github.com/chana1226/petMiniPJ/files/15332793/Petwave.PDF.pdf
+[Petwave 유기동물 입양 안내 사이트 PDF.pdf]
+(https://github.com/chana1226/petMiniPJ/files/15332793/Petwave.PDF.pdf)
